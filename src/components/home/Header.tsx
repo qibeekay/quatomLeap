@@ -49,16 +49,16 @@ const Header = ({ h1, p, btext, size, ath, smsize }: props) => {
   }, []);
 
   return (
-    <header>
+    <header className="mt-10 md:mt-0">
       <Navbar />
 
       {/* hero section */}
       <div
-        className="w-full min-h-screen relative bg-no-repeat bg-cover"
+        className="w-full h-[80vh] bg-top md:bg-top md:min-h-screen relative bg-no-repeat bg-cover"
         style={{ backgroundImage: `url(${images[currentImageIndex]})` }}
       >
         {/* absolute background */}
-        <div className="absolute top-0 w-full min-h-screen bg-gradient-to-r from-black/70 to-black/5"></div>
+        <div className="absolute top-0 w-full h-[80vh] md:min-h-screen bg-gradient-to-r from-black/70 to-black/5"></div>
         <div className="text-white relative pt-[6rem] xs:pt-[12rem] sm:pt-[16rem] max-w-[1440px] px-4 mx-auto">
           <div className="max-w-[759px] flex flex-col gap-6">
             <p className=" uppercase text-primary text-sm xs:text-xl">{p}</p>

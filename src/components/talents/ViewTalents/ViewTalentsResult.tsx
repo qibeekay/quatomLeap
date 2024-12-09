@@ -4,6 +4,10 @@ import { GetProfileByCategory } from "../../../api/profile";
 import FormDataType from "../../../utils/DeclareType";
 import img from "../../../assets/male.jpg";
 import { HiX } from "react-icons/hi";
+import Loader from "../../../utils/Loader";
+import { GetUserdata } from "../../../api/auth";
+import { PaystackButton } from "react-paystack";
+import usePaystack from "../../../hooks/usePaystack";
 
 interface Props {
   gender: string;
@@ -14,10 +18,39 @@ interface Props {
 const ViewTalentsResult = ({ gender, level, category }: Props) => {
   const [nav, setNav] = useState(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [status, setStatus] = useState(0);
+  const [usertoken, setUsertoken] = useState("");
   const [response, setResponse] = useState<FormDataType[]>([]);
   const [selectedProfile, setSelectedProfile] = useState<FormDataType | null>(
     null
   );
+  const paymentType = "scout";
+  const { email, loading, message, config, handleSuccess, handleClose } =
+    usePaystack(paymentType);
+
+  useEffect(() => {
+    // Fetch mail from localStorage when the component mounts
+    const userToken = localStorage.getItem("hopettt")?.trim();
+    if (userToken) {
+      const cleanedUserToken = userToken.replace(/"/g, "");
+      setUsertoken(cleanedUserToken);
+    }
+  }, []);
+
+  const getuser = async () => {
+    // setIsLoading(true);
+
+    const res = await GetUserdata(usertoken);
+    console.log(res);
+    setStatus(res.isScoutPaid);
+  };
+
+  // fetch user on component mount
+  useEffect(() => {
+    if (usertoken) {
+      getuser();
+    }
+  }, [usertoken]);
 
   const toggleNav = (profile: FormDataType | null) => {
     setSelectedProfile(profile);
@@ -70,7 +103,7 @@ const ViewTalentsResult = ({ gender, level, category }: Props) => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 items-center justify-center gap-10 gap-y-20">
             {isLoading ? (
-              <p>Loading...</p>
+              <Loader />
             ) : response.length === 0 ? (
               <p>No data available</p>
             ) : (
@@ -139,14 +172,24 @@ const ViewTalentsResult = ({ gender, level, category }: Props) => {
                 </div>
 
                 <div className="px-4">
-                  <button
-                    className="bg-primary rounded-lg py-[14px] w-[188px]"
-                    onClick={() => {
-                      openProfile(selectedProfile.usertoken);
-                    }}
-                  >
-                    Unlock For $200
-                  </button>
+                  {status === 1 ? (
+                    <button
+                      className="bg-primary rounded-lg py-[14px] w-[188px]"
+                      onClick={() => {
+                        openProfile(selectedProfile.usertoken);
+                      }}
+                    >
+                      View Profile
+                    </button>
+                  ) : (
+                    <PaystackButton
+                      {...config}
+                      text="Unlock For $200"
+                      onSuccess={handleSuccess}
+                      onClose={handleClose}
+                      className="paystack-button"
+                    />
+                  )}
                 </div>
               </div>
             </div>

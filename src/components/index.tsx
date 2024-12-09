@@ -40,6 +40,26 @@ import ViewtalentsPage from "./talents/ViewTalents/ViewtalentsPage";
 import ViewTalentsResult from "./talents/ViewTalents/ViewTalentsResult";
 import ScoutView from "../pages/scout-view";
 import ScoutViewPage from "./profile/scoutView/ScoutViewPage";
+import CreateBlog from "./create-blog/CreateBlog";
+import CreateBlogs from "../pages/admin/create-blog";
+import Sidebar from "./externalComponents/Sidebar";
+import Mainnav from "./create-blog/Mainnav";
+import AdminNav from "./externalComponents/AdminNav";
+import DashMain from "./admin-dashboard/DashMain";
+import Dashboard from "../pages/admin/dashboard";
+import DashboardPage from "./admin-dashboard/DashboardPage";
+import Blogs from "../pages/admin/blogs";
+import BlogsMain from "./admin-blog/BlogsMain";
+import BlogsPage from "./admin-blog/BlogsPage";
+import BlogsCategory from "./blogs/BlogsCategory";
+import UsersBlog from "../pages/blogs";
+import UsersBlogPage from "./blogs/UsersBlogPage";
+import SingleBlog from "../pages/blogs/single-blog";
+import SingleBlogDetails from "./blogs/single-blog/SingleBlogDetails";
+import SingleBlogPage from "./blogs/single-blog/SingleBlogPage";
+import ContactUs from "../pages/contact";
+import ContactUsPage from "./contact/ContactUsPage";
+import ContactUsDetails from "./contact/ContactUsDetails";
 
 export {
   Home,
@@ -84,4 +104,24 @@ export {
   ViewtalentsPage,
   ScoutView,
   ScoutViewPage,
+  CreateBlog,
+  CreateBlogs,
+  Sidebar,
+  Mainnav,
+  AdminNav,
+  DashMain,
+  Dashboard,
+  DashboardPage,
+  Blogs,
+  BlogsMain,
+  BlogsPage,
+  BlogsCategory,
+  UsersBlog,
+  UsersBlogPage,
+  SingleBlog,
+  SingleBlogPage,
+  SingleBlogDetails,
+  ContactUs,
+  ContactUsPage,
+  ContactUsDetails,
 };

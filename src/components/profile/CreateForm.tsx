@@ -24,8 +24,9 @@ const CreateForm = () => {
   const [status, setStatus] = useState(0);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const paymentType = "player";
   const { email, loading, message, config, handleSuccess, handleClose } =
-    usePaystack();
+    usePaystack(paymentType);
 
   useEffect(() => {
     // Fetch mail from localStorage when the component mounts

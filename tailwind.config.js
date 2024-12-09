@@ -23,5 +23,5 @@ export default {
       poppins: ["Montserrat", "sans-serif"],
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/typography")],
 };

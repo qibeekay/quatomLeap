@@ -1,17 +1,16 @@
 import { useState, useEffect } from "react";
 import { GetUserdata } from "../api/auth";
 
-const usePaystack = () => {
-  const publicKey = "pk_test_6b17bff61035f7795ab603ed131a9cd6f4d1dece"; // Replace with your Paystack public key
+type PaymentType = 'player' | 'scout';
+
+const usePaystack = (paymentType:PaymentType) => {
+  const publicKey = "pk_test_6b17bff61035f7795ab603ed131a9cd6f4d1dece";
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
-   const [profile, setProfile] = useState(null);
   const [usertoken, setUsertoken] = useState("");
 
-
   useEffect(() => {
-    // Fetch mail from localStorage when the component mounts
     const userToken = localStorage.getItem("hopettt")?.trim();
     if (userToken) {
       const cleanedUserToken = userToken.replace(/"/g, "");
@@ -20,12 +19,9 @@ const usePaystack = () => {
   }, []);
 
   const getuser = async () => {
-    // setIsLoading(true);
-      const res = await GetUserdata(usertoken);
-      setEmail(res.email);
-     
+    const res = await GetUserdata(usertoken);
+    setEmail(res.email);
   };
-
 
   useEffect(() => {
     if (usertoken) {
@@ -33,9 +29,17 @@ const usePaystack = () => {
     }
   }, [usertoken]);
 
+  // Define amounts based on payment type
+  const paymentAmounts: Record<PaymentType, number> = {
+  player: 4000, // Example amount in Naira
+  scout: 7000,
+};
+
+  const amount = paymentAmounts[paymentType] || 0;
+
   const config = {
-    email: email,
-    amount: 4000 * 100, // Convert to kobo
+    email,
+    amount: amount * 100, // Convert to kobo
     publicKey,
     metadata: {
       custom_fields: [
@@ -57,7 +61,12 @@ const usePaystack = () => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ reference: reference.reference, email: "mokwechibuike7@gmail.com", amount: 4000 }),
+      body: JSON.stringify({
+        reference: reference.reference,
+        email,
+        amount,
+        paymentType
+      }),
     })
       .then((response) => response.json())
       .then((data) => {

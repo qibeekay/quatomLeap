@@ -82,3 +82,10 @@
 .arrow--disabled {
   fill: rgba(255, 255, 255, 0.5);
 }
+
+.truncated-title {
+  white-space: nowrap; /* Prevent the text from wrapping to the next line */
+  overflow: hidden; /* Hide any overflowed text */
+  text-overflow: ellipsis; /* Add '...' when the text overflows */
+  max-width: 200px; /* Set a maximum width (adjust this value to your needs) */
+}

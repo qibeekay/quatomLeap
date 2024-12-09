@@ -1,5 +1,5 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import Logo from "../../assets/logo.png";
+import Logo from "../../assets/QL.png";
 import Button from "./Button";
 import { HiOutlineMenuAlt4, HiX } from "react-icons/hi";
 import { HiXMark } from "react-icons/hi2";
@@ -14,11 +14,11 @@ const Navbar = () => {
   const [cat, setcat] = useState(false);
   const [status, setStatus] = useState(0);
   const [profile, setprofile] = useState(false);
-
+  const paymentType = "player";
   const [usertoken, setUsertoken] = useState("");
   const [tokenStatus, setTokenStatus] = useState(false);
   const { email, loading, message, config, handleSuccess, handleClose } =
-    usePaystack();
+    usePaystack(paymentType);
 
   useEffect(() => {
     // Fetch mail from localStorage when the component mounts
@@ -88,7 +88,7 @@ const Navbar = () => {
     <nav className="bg-dark z-10 fixed top-0 w-full">
       <div className="flex items-center justify-between max-w-[1440px] px-4 mx-auto">
         {/* logo */}
-        <div className="w-[7rem] aspect-square">
+        <div className="w-[5rem] my-4 aspect-square">
           <img className="h-full w-full" src={Logo} alt="Logo" />
         </div>
 
@@ -242,15 +242,15 @@ const Navbar = () => {
 
             <li>
               <Link
-                to="/blog"
+                to="/blogs"
                 className={`flex duration-300 ease-in-out flex-col items-center group hover:text-primary ${
-                  isActive("/blog") ? "text-primary" : "text-white"
+                  isActive("/blogs") ? "text-primary" : "text-white"
                 }`}
               >
                 Blog
                 <div
                   className={`w-[16px] rounded-sm h-1 bg-primary transition-opacity duration-300 ease-in-out ${
-                    isActive("/blog") ? "opacity-100" : "opacity-0"
+                    isActive("/blogs") ? "opacity-100" : "opacity-0"
                   } group-hover:opacity-100`}
                 ></div>
               </Link>
@@ -260,7 +260,14 @@ const Navbar = () => {
 
         {/* button */}
         <div className="hidden lg:flex items-center gap-4">
-          <Button name="Contact Us" />
+          <div>
+            <Link
+              to={"/contact-us"}
+              className="bg-primary hover:bg-primary/90 duration-300 ease-in-out text-dark py-4 px-6 w-fit rounded-lg font-semibold capitalize flex flex-col sm:flex-row"
+            >
+              Contact Us
+            </Link>
+          </div>
 
           {usertoken ? (
             status === 1 ? (
@@ -297,7 +304,7 @@ const Navbar = () => {
 
         <div className="block lg:hidden">
           <button className="" onClick={toggleNav}>
-            <HiOutlineMenuAlt4 size={35} />
+            <HiOutlineMenuAlt4 className="text-white" size={35} />
           </button>
         </div>
       </div>
@@ -317,7 +324,7 @@ const Navbar = () => {
           className="mt-4 w-full grid items-center justify-end px-4"
           onClick={toggleNav}
         >
-          <HiXMark size={30} />
+          <HiXMark className="text-white" size={30} />
         </button>
         <div className="mt-[7rem]">
           <ul className="flex flex-col gap-8">
@@ -459,13 +466,13 @@ const Navbar = () => {
               <Link
                 to="/blog"
                 className={` duration-300 ease-in-out group hover:text-primary ${
-                  isActive("/blog") ? "text-primary" : "text-white"
+                  isActive("/blogs") ? "text-primary" : "text-white"
                 }`}
               >
                 Blog
                 <div
                   className={`w-[16px] rounded-sm h-1 bg-primary transition-opacity duration-300 ease-in-out ${
-                    isActive("/blog") ? "opacity-100" : "opacity-0"
+                    isActive("/blogs") ? "opacity-100" : "opacity-0"
                   } group-hover:opacity-100`}
                 ></div>
               </Link>
@@ -474,7 +481,13 @@ const Navbar = () => {
 
           <div className=" my-6">
             <div className="">
-              <Button name="Contact Us" />
+              {/* <Button name="Contact Us" /> */}
+              <Link
+                to={"/contact-us"}
+                className="bg-primary hover:bg-primary/90 duration-300 ease-in-out text-dark py-4 px-6 w-fit rounded-lg font-semibold capitalize flex flex-col sm:flex-row"
+              >
+                Contact Us
+              </Link>
             </div>
 
             <div className="">

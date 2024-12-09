@@ -12,6 +12,7 @@ import FormDataType from "../../../utils/DeclareType";
 
 const ProfilePage = () => {
   const [usertoken, setUsertoken] = useState("");
+    
   const [profile, setProfile] = useState<FormDataType | null>(null);
 
   useEffect(() => {

@@ -10,6 +10,7 @@ import {
 import { GetUserProfile } from "../../../api/profile";
 import FormDataType from "../../../utils/DeclareType";
 import { useLocation } from "react-router-dom";
+import Loader from "../../../utils/Loader";
 
 const ScoutViewPage = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -44,7 +45,7 @@ const ScoutViewPage = () => {
   return (
     <div>
       {isLoading ? (
-        <p>Loading...</p>
+        <Loader />
       ) : (
         <>
           <ProfileHeader name={profile?.full_name} image={profile?.image} />
