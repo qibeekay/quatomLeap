@@ -24,27 +24,25 @@ const CreateForm = () => {
   const [status, setStatus] = useState(0);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const navigate = useNavigate();
   const paymentType = "player";
   const { email, loading, message, config, handleSuccess, handleClose } =
     usePaystack(paymentType);
 
   useEffect(() => {
-    // Fetch mail from localStorage when the component mounts
     const userToken = localStorage.getItem("hopettt")?.trim();
     if (userToken) {
       const cleanedUserToken = userToken.replace(/"/g, "");
       setUsertoken(cleanedUserToken);
-    }
-
-    if (!userToken) {
-      setIsModalVisible(true);
+    } else {
+      setIsModalVisible(true); // Show the modal if no user token exists
     }
   }, []);
 
   const handleCloseModal = () => {
     setIsModalVisible(false);
     // Redirect to login or handle user action
-    window.location.href = "/auth/login";
+    navigate("/auth/login", { replace: true });
   };
 
   // fetch user data
@@ -74,8 +72,6 @@ const CreateForm = () => {
     e.preventDefault();
     setStep((prevStep) => Math.max(prevStep - 1, 1));
   };
-
-  const navigate = useNavigate();
 
   // set all form data
   const [formdata, setFormData] = useState<FormDataType>(() => {

@@ -464,7 +464,7 @@ const Navbar = () => {
 
             <li>
               <Link
-                to="/blog"
+                to="/blogs"
                 className={` duration-300 ease-in-out group hover:text-primary ${
                   isActive("/blogs") ? "text-primary" : "text-white"
                 }`}

@@ -23,9 +23,13 @@ const Footer = () => {
               <p className="font-semibold text-lg">About Company</p>
 
               <p className="text-center ">
-                Quantum leap sports helps businesses form strong partnerships
-                that benefit both parties. We focus on finding sponsors for
-                properties and offering expert advice to brands.
+                Quantum leap sport is a dynamic sports agency dedicated to
+                empowering athletes and brands in Nigeria. We offer a
+                comprehensive range of services, including player placement via
+                athletic scholarships to high schools and colleges in United
+                States, Asia and Europe, player representation, management,
+                sales, consulting, and marketing, tailored to meet the unique
+                needs of our clients.
               </p>
 
               <div className="flex items-center gap-4">

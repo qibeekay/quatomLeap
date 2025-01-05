@@ -2,6 +2,7 @@ import coo from "../../assets/coo.jpg";
 import okoli from "../../assets/okoli.jpg";
 import brit from "../../assets/brit.jpg";
 import chi from "../../assets/chi.jpg";
+import paige from "../../assets/liason.jpg";
 import divine from "../../assets/divine.jpg";
 import coach from "../../assets/coach.jpg";
 import yusuf from "../../assets/yusuf.jpg";
@@ -45,6 +46,12 @@ const Team = () => {
       role: "Scout",
       email: "joshua@qlsportsonline.com",
       img: okoli,
+    },
+    {
+      name: "Mr Dane Paige",
+      role: "International Liaison Officer",
+      email: "paige@qlsportsonline.com",
+      img: paige,
     },
     {
       name: "Chibuike Mokwe",

@@ -187,7 +187,7 @@ const ViewTalentsResult = ({ gender, level, category }: Props) => {
                       text="Unlock For $200"
                       onSuccess={handleSuccess}
                       onClose={handleClose}
-                      className="paystack-button"
+                      className="paystack-button bg-primary rounded-lg py-[14px] w-[188px]"
                     />
                   )}
                 </div>

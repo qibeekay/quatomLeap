@@ -45,10 +45,10 @@ const Mainnav = () => {
     const newTitle = e.target.value;
     setTitle(newTitle);
 
-    // Generate excerpt from the first 5 words of the title
+    // Generate excerpt from the first 5 words of the title, replacing spaces with hyphens
     const titleWords = newTitle.split(" ");
-    const firstFiveWords = titleWords.slice(0, 5).join(" ");
-    setExcerpt(firstFiveWords); // Set the excerpt
+    const firstFiveWords = titleWords.slice(0, 5).join("-");
+    setExcerpt(firstFiveWords); // Set the excerpt with hyphens
   };
 
   const handleUpload = async (e: FormEvent) => {
@@ -123,7 +123,7 @@ const Mainnav = () => {
                     Select a category
                   </option>
                   <option value="1">Sports</option>
-                  <option value="2">Media Outreach</option>
+                  <option value="2">Community Outreach</option>
                 </select>
               </div>
 
