@@ -15,6 +15,7 @@ import { PaystackButton } from "react-paystack";
 import usePaystack from "../../hooks/usePaystack";
 import { GetUserdata } from "../../api/auth";
 import LoginModal from "../externalComponents/LoginModal";
+import { toast } from "react-toastify";
 
 const CreateForm = () => {
   const location = useLocation();
@@ -220,6 +221,13 @@ const CreateForm = () => {
     }
   };
 
+  useEffect(() => {
+    if (message) {
+      // Trigger toast notification based on message content
+      toast.info(message);
+    }
+  }, [message]);
+
   return (
     <div className="bg-white">
       <form action="" className="overflow-hidden relative">
@@ -317,50 +325,49 @@ const CreateForm = () => {
         >
           <OtherSkills formdata={formdata} handleChange={handleChange} />
         </div>
-
-        <div className="max-w-[1440px] mx-auto px-4 py-[40px] flex items-center justify-between">
-          {/* previous */}
-          {step > 1 && (
-            <button
-              className="flex items-center justify-center py-[12px] w-[88px] bg-primary/60 rounded-[4px]"
-              onClick={handlePrev}
-            >
-              <div>
-                <img src={img1} alt="" />
-              </div>
-            </button>
-          )}
-
-          {/* next */}
-          {step < 4 ? (
-            <button
-              className="bg-primary w-[300px] lg:w-[409px] font-semibold text-[#001F3D] rounded-lg py-[16px]"
-              onClick={handleNext}
-            >
-              Next
-            </button>
-          ) : status === 1 ? (
-            <button
-              className="bg-primary w-[300px] font-semibold text-[#001F3D] rounded-lg py-[16px]"
-              onClick={handleUpload}
-            >
-              {isLoading ? "Loading..." : "Submit Profile"}
-            </button>
-          ) : (
-            <div>Please subcribe to upload</div>
-          )}
-        </div>
       </form>
-      <>
-        <PaystackButton
-          {...config}
-          text="Proceed"
-          onSuccess={handleSuccess}
-          onClose={handleClose}
-          className="paystack-button"
-        />
-        {message && <p>{message}</p>}
-      </>
+      <div className="max-w-[1440px] mx-auto px-4 py-[40px] flex items-center justify-between">
+        {/* previous */}
+        {step > 1 && (
+          <button
+            className="flex items-center justify-center py-[12px] w-[88px] bg-primary/60 rounded-[4px]"
+            onClick={handlePrev}
+          >
+            <div>
+              <img src={img1} alt="" />
+            </div>
+          </button>
+        )}
+
+        {/* next */}
+        {step < 4 ? (
+          <button
+            className="bg-primary w-[300px] lg:w-[409px] font-semibold text-[#001F3D] rounded-lg py-[16px]"
+            onClick={handleNext}
+          >
+            Next
+          </button>
+        ) : status === 1 ? (
+          <button
+            className="bg-primary w-[300px] font-semibold text-[#001F3D] rounded-lg py-[16px]"
+            onClick={handleUpload}
+          >
+            {isLoading ? "Loading..." : "Submit Profile"}
+          </button>
+        ) : (
+          <div>
+            {" "}
+            <PaystackButton
+              {...config}
+              text="Proceed"
+              onSuccess={handleSuccess}
+              onClose={handleClose}
+              className="paystack-button bg-primary rounded-lg py-[14px] w-[188px]"
+            />
+          </div>
+        )}
+      </div>
+
       <LoginModal isVisible={isModalVisible} onClose={handleCloseModal} />
     </div>
   );

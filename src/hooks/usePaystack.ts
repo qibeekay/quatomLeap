@@ -4,7 +4,7 @@ import { GetUserdata } from "../api/auth";
 type PaymentType = 'player' | 'scout';
 
 const usePaystack = (paymentType:PaymentType) => {
-  const publicKey = "pk_test_6b17bff61035f7795ab603ed131a9cd6f4d1dece";
+  const publicKey = import.meta.env.VITE_PAYSTACK_KEY;
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
@@ -31,8 +31,8 @@ const usePaystack = (paymentType:PaymentType) => {
 
   // Define amounts based on payment type
   const paymentAmounts: Record<PaymentType, number> = {
-  player: 4000, // Example amount in Naira
-  scout: 7000,
+  player: 5000, // Example amount in Naira
+  scout: 150000,
 };
 
   const amount = paymentAmounts[paymentType] || 0;
@@ -72,7 +72,7 @@ const usePaystack = (paymentType:PaymentType) => {
       .then((data) => {
         setLoading(false);
         if (data.status === "success") {
-          setMessage("Payment verified successfully!");
+          setMessage("Payment verified successfully!, Please refresh to continue");
         } else {
           setMessage(`Verification failed: ${data.message}`);
         }

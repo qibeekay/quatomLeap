@@ -8,6 +8,7 @@ import Loader from "../../../utils/Loader";
 import { GetUserdata } from "../../../api/auth";
 import { PaystackButton } from "react-paystack";
 import usePaystack from "../../../hooks/usePaystack";
+import { toast } from "react-toastify";
 
 interface Props {
   gender: string;
@@ -90,6 +91,13 @@ const ViewTalentsResult = ({ gender, level, category }: Props) => {
   const openProfile = (uuid: string) => {
     navigate(`/player-profile/${uuid}`, { state: { uuid } });
   };
+
+  useEffect(() => {
+    if (message) {
+      // Trigger toast notification based on message content
+      toast.info(message);
+    }
+  }, [message]);
 
   return (
     <div className="bg-white">

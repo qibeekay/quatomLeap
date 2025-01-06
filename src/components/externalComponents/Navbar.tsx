@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { GetUserdata } from "../../api/auth";
 import { PaystackButton } from "react-paystack";
 import usePaystack from "../../hooks/usePaystack";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
   const location = useLocation();
@@ -64,7 +65,7 @@ const Navbar = () => {
     navigate(`/talents/${category}`, { state: { category } });
     setTimeout(() => {
       toggleCat();
-      toggleNav();
+      // toggleNav();
     }, 500);
   };
 
@@ -73,7 +74,7 @@ const Navbar = () => {
     navigate(`/create-profile/${category}`, { state: { category } });
     setTimeout(() => {
       toggleProfile();
-      toggleNav();
+      // toggleNav();
     }, 500);
   };
 
@@ -83,6 +84,13 @@ const Navbar = () => {
   const openUser = (uuid: string) => {
     navigate(`/player-profile/${uuid}`, { state: { uuid } });
   };
+
+  useEffect(() => {
+    if (message) {
+      // Trigger toast notification based on message content
+      toast.info(message);
+    }
+  }, [message]);
 
   return (
     <nav className="bg-dark z-10 fixed top-0 w-full">
