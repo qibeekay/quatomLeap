@@ -223,12 +223,12 @@ const ScoutViewPage = () => {
           <Footer />
 
           {/* Download PDF Button */}
-          <button
+          {/* <button
             onClick={downloadPDF}
             style={{ margin: "20px", padding: "10px" }}
           >
             Download Profile as PDF
-          </button>
+          </button> */}
         </>
       )}
     </div>

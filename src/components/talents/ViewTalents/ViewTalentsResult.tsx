@@ -142,12 +142,12 @@ const ViewTalentsResult = ({ gender, level, category }: Props) => {
         {/* Modal */}
         {nav && selectedProfile && (
           <div className="w-full h-screen bg-black/35 left-0 top-0 fixed z-30 grid justify-center items-center">
-            <div className="w-[500px] bg-white p-6 flex flex-col items-center justify-center relative overflow-hidden rounded-2xl">
+            <div className="w-[300px] sm:w-[400px] md:w-[500px] bg-white p-6 flex flex-col items-center justify-center relative overflow-hidden rounded-2xl">
               <button onClick={() => toggleNav(null)}>
                 <HiX size={30} className="absolute top-4 right-4" />
               </button>
               <div className="">
-                <div className="w-[500px] h-[287px]">
+                <div className="w-[300px] sm:w-[400px] md:w-[500px] h-[287px]">
                   <img
                     className="w-full h-full object-cover object-top"
                     src={selectedProfile.image || img}
@@ -192,7 +192,7 @@ const ViewTalentsResult = ({ gender, level, category }: Props) => {
                   ) : (
                     <PaystackButton
                       {...config}
-                      text="Unlock For $200"
+                      text="Unlock For N150,000"
                       onSuccess={handleSuccess}
                       onClose={handleClose}
                       className="paystack-button bg-primary rounded-lg py-[14px] w-[188px]"

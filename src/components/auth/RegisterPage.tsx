@@ -56,6 +56,10 @@ const RegisterPage = () => {
     setVerifydata((prevVerifyData) => ({ ...prevVerifyData, [name]: value }));
   };
 
+  // Validation states
+  const isPasswordLongEnough = formdata.password.length >= 8;
+  const hasSpecialCharacter = /[!@#$%^&*(),.?":{}|<>]/.test(formdata.password);
+
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
@@ -80,7 +84,7 @@ const RegisterPage = () => {
     }
   }, []);
 
-  console.log(mail);
+  // console.log(mail);
 
   const handleVerify = async (e: FormEvent) => {
     e.preventDefault();
@@ -100,7 +104,7 @@ const RegisterPage = () => {
 
   return (
     <div className="w-full relative min-h-screen">
-      <div className="flex items-center h-full">
+      <div className="flex items-center justify-center">
         {/* bg */}
         <div className="w-full relative min-h-screen hidden md:block bg-Form bg-cover">
           <div className="absolute top-0 w-full min-h-screen bg-gradient-to-t from-[#2B445D]/80 to-[#FA9938]/80"></div>
@@ -127,179 +131,207 @@ const RegisterPage = () => {
         </div>
 
         {/* form */}
-        <div className="px-[6rem] w-full max-w-[800px] mt-16">
-          {/* logo */}
-          <div className="w-[7rem] aspect-square">
-            <img className="w-full h-full" src={Logo} alt="Logo" />
-          </div>
+        <div className=" flex items-center justify-center w-full md:block h-full min-h-screen px-20 md:px-0">
+          <div className="w-full h-full min-h-screen flex items-center justify-center">
+            <div className="px-[6rem] w-full max-w-[800px]">
+              {/* logo */}
+              <div className="w-[7rem] aspect-square">
+                <img className="w-full h-full" src={Logo} alt="Logo" />
+              </div>
 
-          {/* header */}
-          <div className="">
-            <h1 className="text-primary font-bold text-[32sspx]">
-              Welcome To Quantum leap sport
-            </h1>
-            <p className="text-sm mt-4">Create An Account</p>
-          </div>
+              {/* header */}
+              <div className="">
+                <h1 className="text-primary font-bold text-[15px]">
+                  Welcome To Quantum leap sport
+                </h1>
+                <p className="text-sm mt-4">Create An Account</p>
+              </div>
 
-          {/* form */}
-          <div className=" overflow-hidden">
-            <div
-              className={`transition-transform duration-500 ease-in-out absolute inset-0 ${
-                step === 1 ? "translate-x-0" : "-translate-x-full"
-              } ${step > 1 ? "opacity-0 absolute" : "opacity-100 relative"}`}
-            >
-              <form
-                action=""
-                className="flex flex-col mt-14 gap-4"
-                onSubmit={handleSubmit}
-              >
-                {/* name */}
-                <div className="flex flex-col">
-                  <label htmlFor="name" className="font-medium mb-1">
-                    Name
-                  </label>
-                  <input
-                    className="px-[16px] py-[8px] rounded-lg border border-black placeholder:text-[#6B6B6B] placeholder:text-xs"
-                    type="text"
-                    name="name"
-                    value={formdata.name}
-                    onChange={handleChange}
-                    required
-                    placeholder="John Doe"
-                    id=""
-                  />
-                </div>
-
-                {/* email */}
-                <div className="flex flex-col">
-                  <label htmlFor="name" className="font-medium mb-1">
-                    Email
-                  </label>
-                  <input
-                    className="px-[16px] py-[8px] rounded-lg border border-black placeholder:text-[#6B6B6B] placeholder:text-xs"
-                    type="email"
-                    name="email"
-                    value={formdata.email}
-                    onChange={handleChange}
-                    required
-                    placeholder="example@gmail.com"
-                    id=""
-                  />
-                </div>
-
-                {/* password */}
-                <div className="flex flex-col relative">
-                  <label htmlFor="name" className="font-medium mb-1">
-                    Password
-                  </label>
-                  <input
-                    className="px-[16px] py-[8px] rounded-lg border border-black placeholder:text-[#6B6B6B] placeholder:text-xs"
-                    type={showPassword ? "text" : "password"}
-                    name="password"
-                    value={formdata.password}
-                    onChange={handleChange}
-                    required
-                    id=""
-                  />
-                  <button
-                    type="button"
-                    onClick={togglePasswordVisibility}
-                    className="absolute top-[50%] right-2  text-black/60"
+              {/* form */}
+              <div className=" overflow-hidden">
+                <div
+                  className={`transition-transform duration-500 ease-in-out absolute inset-0 ${
+                    step === 1 ? "translate-x-0" : "-translate-x-full"
+                  } ${
+                    step > 1 ? "opacity-0 absolute" : "opacity-100 relative"
+                  }`}
+                >
+                  <form
+                    action=""
+                    className="flex flex-col mt-14 gap-4"
+                    onSubmit={handleSubmit}
                   >
-                    {showPassword ? (
-                      <IoEyeOffSharp size={25} />
-                    ) : (
-                      <IoEyeSharp size={25} />
-                    )}
-                  </button>
-                </div>
-
-                {/* confirm password */}
-                <div className="flex flex-col relative">
-                  <label htmlFor="name" className="font-medium mb-1">
-                    Confirm Password
-                  </label>
-                  <input
-                    className="px-[16px] py-[8px] rounded-lg border border-black placeholder:text-[#6B6B6B] placeholder:text-xs"
-                    type={showPassword1 ? "text" : "password"}
-                    name="cpassword"
-                    value={formdata.cpassword}
-                    onChange={handleChange}
-                    required
-                    id=""
-                  />
-                  <button
-                    type="button"
-                    onClick={togglePassword1Visibility}
-                    className="absolute top-[50%] right-2  text-black/60"
-                  >
-                    {showPassword1 ? (
-                      <IoEyeOffSharp size={25} />
-                    ) : (
-                      <IoEyeSharp size={25} />
-                    )}
-                  </button>
-                </div>
-
-                <button className="bg-primary rounded-lg py-[14px] w-[188px]">
-                  {isLoading ? "Loading..." : "Sign Up"}
-                </button>
-                <div className="w-full flex items-center justify-end">
-                  <Link
-                    to={"/auth/login"}
-                    className="flex text-primary items-center gap-4"
-                  >
-                    Already have an account Login
-                    <div className="">
-                      <img src={img1} alt="" />
+                    {/* name */}
+                    <div className="flex flex-col">
+                      <label htmlFor="name" className="font-medium mb-1">
+                        Name
+                      </label>
+                      <input
+                        className="px-[16px] py-[8px] rounded-lg border border-black placeholder:text-[#6B6B6B] placeholder:text-xs"
+                        type="text"
+                        name="name"
+                        value={formdata.name}
+                        onChange={handleChange}
+                        required
+                        placeholder="John Doe"
+                        id=""
+                      />
                     </div>
-                  </Link>
+
+                    {/* email */}
+                    <div className="flex flex-col">
+                      <label htmlFor="name" className="font-medium mb-1">
+                        Email
+                      </label>
+                      <input
+                        className="px-[16px] py-[8px] rounded-lg border border-black placeholder:text-[#6B6B6B] placeholder:text-xs"
+                        type="email"
+                        name="email"
+                        value={formdata.email}
+                        onChange={handleChange}
+                        required
+                        placeholder="example@gmail.com"
+                        id=""
+                      />
+                    </div>
+
+                    {/* password */}
+                    <div className="flex flex-col relative">
+                      <label htmlFor="name" className="font-medium mb-1">
+                        Password
+                      </label>
+                      <input
+                        className="px-[16px] py-[8px] rounded-lg border border-black placeholder:text-[#6B6B6B] placeholder:text-xs"
+                        type={showPassword ? "text" : "password"}
+                        name="password"
+                        value={formdata.password}
+                        onChange={handleChange}
+                        required
+                        id=""
+                      />
+                      <button
+                        type="button"
+                        onClick={togglePasswordVisibility}
+                        className="absolute top-[50%] right-2  text-black/60"
+                      >
+                        {showPassword ? (
+                          <IoEyeOffSharp size={25} />
+                        ) : (
+                          <IoEyeSharp size={25} />
+                        )}
+                      </button>
+                    </div>
+                    <div className="flex flex-col">
+                      <small
+                        className={` ${
+                          isPasswordLongEnough
+                            ? "text-green-500"
+                            : "text-red-500"
+                        }`}
+                      >
+                        Password must be 8 characters or more
+                      </small>
+                      <small
+                        className={` ${
+                          hasSpecialCharacter
+                            ? "text-green-500"
+                            : "text-red-500"
+                        }`}
+                      >
+                        Password must contain special characters
+                      </small>
+                    </div>
+
+                    {/* confirm password */}
+                    <div className="flex flex-col relative">
+                      <label htmlFor="name" className="font-medium mb-1">
+                        Confirm Password
+                      </label>
+                      <input
+                        className="px-[16px] py-[8px] rounded-lg border border-black placeholder:text-[#6B6B6B] placeholder:text-xs"
+                        type={showPassword1 ? "text" : "password"}
+                        name="cpassword"
+                        value={formdata.cpassword}
+                        onChange={handleChange}
+                        required
+                        id=""
+                      />
+                      <button
+                        type="button"
+                        onClick={togglePassword1Visibility}
+                        className="absolute top-[50%] right-2  text-black/60"
+                      >
+                        {showPassword1 ? (
+                          <IoEyeOffSharp size={25} />
+                        ) : (
+                          <IoEyeSharp size={25} />
+                        )}
+                      </button>
+                    </div>
+
+                    <button className="bg-primary rounded-lg py-[14px] w-[188px]">
+                      {isLoading ? "Loading..." : "Sign Up"}
+                    </button>
+                    <div className="w-full flex items-center justify-end">
+                      <Link
+                        to={"/auth/login"}
+                        className="flex text-primary items-center gap-4"
+                      >
+                        Already have an account Login
+                        <div className="">
+                          <img src={img1} alt="" />
+                        </div>
+                      </Link>
+                    </div>
+                  </form>
                 </div>
-              </form>
-            </div>
 
-            <div
-              className={`transition-transform duration-500 ease-in-out absolute inset-0 ${
-                step === 2 ? "translate-x-0" : "-translate-x-full"
-              } ${step > 2 ? "opacity-0 absolute" : "opacity-100 relative"}`}
-            >
-              <form action="" className="flex flex-col mt-14 gap-4">
-                {/* name */}
-                <div className="flex flex-col">
-                  <label htmlFor="name" className="font-medium mb-1">
-                    Name
-                  </label>
-                  <input
-                    className="px-[16px] py-[8px] rounded-lg border border-black placeholder:text-[#6B6B6B] placeholder:text-xs"
-                    type="text"
-                    name="verificationCode"
-                    value={verifydata.verificationCode}
-                    onChange={handleVerifyChange}
-                    placeholder="Enter your code..."
-                    required
-                    id=""
-                  />
+                <div
+                  className={`transition-transform duration-500 ease-in-out absolute inset-0 ${
+                    step === 2 ? "translate-x-0" : "-translate-x-full"
+                  } ${
+                    step > 2 ? "opacity-0 absolute" : "opacity-100 relative"
+                  }`}
+                >
+                  <form action="" className="flex flex-col mt-14 gap-4">
+                    {/* name */}
+                    <div className="flex flex-col">
+                      <label htmlFor="name" className="font-medium mb-1">
+                        Name
+                      </label>
+                      <input
+                        className="px-[16px] py-[8px] rounded-lg border border-black placeholder:text-[#6B6B6B] placeholder:text-xs"
+                        type="text"
+                        name="verificationCode"
+                        value={verifydata.verificationCode}
+                        onChange={handleVerifyChange}
+                        placeholder="Enter your code..."
+                        required
+                        id=""
+                      />
+                    </div>
+
+                    <button
+                      className="bg-primary rounded-lg py-[14px] w-[188px]"
+                      onClick={handleVerify}
+                    >
+                      {isLoading1 ? "Loading..." : "Verify"}
+                    </button>
+                  </form>
                 </div>
 
-                <button
-                  className="bg-primary rounded-lg py-[14px] w-[188px]"
-                  onClick={handleVerify}
-                >
-                  {isLoading1 ? "Loading..." : "Verify"}
-                </button>
-              </form>
-            </div>
-
-            <div>
-              {step > 1 && (
-                <button
-                  onClick={handlePrev}
-                  className="absolute top-4 font-semibold flex items-center gap-2"
-                >
-                  <HiChevronLeft />
-                  Previous
-                </button>
-              )}
+                <div>
+                  {step > 1 && (
+                    <button
+                      onClick={handlePrev}
+                      className="absolute top-4 font-semibold flex items-center gap-2"
+                    >
+                      <HiChevronLeft />
+                      Previous
+                    </button>
+                  )}
+                </div>
+              </div>
             </div>
           </div>
         </div>

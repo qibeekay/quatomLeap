@@ -58,9 +58,12 @@ const CreateInfo = () => {
               Note:{" "}
               <span className="font-medium">
                 A one-time payment of{" "}
-                <span className="font-bold text-[25px]">$10</span> is required.
-                Your data will be uploaded, and your profile activated after
-                payment.
+                <span className="font-bold text-[25px]">
+                  5000 naira for local players and 10 dollars for international
+                  players
+                </span>{" "}
+                is required. Your data will be uploaded, and your profile
+                activated after payment.
               </span>
             </p>
           </div>
