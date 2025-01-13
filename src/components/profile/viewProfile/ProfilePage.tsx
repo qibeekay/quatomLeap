@@ -9,10 +9,11 @@ import {
 } from "../../../components";
 import { GetUserProfile } from "../../../api/profile";
 import FormDataType from "../../../utils/DeclareType";
+import Loader from "../../../utils/Loader";
 
 const ProfilePage = () => {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [usertoken, setUsertoken] = useState("");
-    
   const [profile, setProfile] = useState<FormDataType | null>(null);
 
   useEffect(() => {
@@ -30,14 +31,9 @@ const ProfilePage = () => {
     try {
       const res = await GetUserProfile(usertoken);
       setProfile(res);
-      // if (res) {
-      //   setTimeout(() => {
-      //     navigate("/profile");
-      //   }, 1000);
-      // }
     } catch {
     } finally {
-      // setIsLoading(false);
+      setIsLoading(false);
     }
   };
 
@@ -49,14 +45,24 @@ const ProfilePage = () => {
     }
   }, [usertoken]);
 
+  // console.log("profile", profile);
+
   return (
     <div>
-      <ProfileHeader name={profile?.full_name} image={profile?.image} />
-      <AthleteBasicInfo profile={profile} />
-      <AcadInfo profile={profile} />
-      <SkillsInfo profile={profile} />
-      <YoutubeLink profile={profile} />
-      <Footer />
+      {isLoading ? (
+        <div className="w-full min-h-screen flex items-center justify-center">
+          <Loader />
+        </div>
+      ) : (
+        <div>
+          <ProfileHeader name={profile?.full_name} image={profile?.image} />
+          <AthleteBasicInfo profile={profile} />
+          <AcadInfo profile={profile} />
+          <SkillsInfo profile={profile} />
+          <YoutubeLink profile={profile} />
+          <Footer />
+        </div>
+      )}
     </div>
   );
 };

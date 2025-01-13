@@ -18,6 +18,7 @@ const Navbar = () => {
   const paymentType = "player";
   const [usertoken, setUsertoken] = useState("");
   const [tokenStatus, setTokenStatus] = useState(false);
+  const [profileModalVisible, setProfileModalVisible] = useState(false);
   const { email, loading, message, config, handleSuccess, handleClose } =
     usePaystack(paymentType);
 
@@ -92,8 +93,21 @@ const Navbar = () => {
     }
   }, [message]);
 
+  const handleMouseEnter = () => {
+    setProfileModalVisible(true);
+  };
+
+  const handleMouseLeave = () => {
+    setProfileModalVisible(false);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("hopettt"); // Clear user token or any other cleanup
+    navigate("/auth/login");
+  };
+
   return (
-    <nav className="bg-dark z-10 fixed top-0 w-full">
+    <nav className="bg-dark z-10 fixed left-0 top-0 w-full">
       <div className="flex items-center justify-between max-w-[1440px] px-4 mx-auto">
         {/* logo */}
         <div className="w-[5rem] my-4 aspect-square">
@@ -279,15 +293,36 @@ const Navbar = () => {
 
           {usertoken ? (
             status === 1 ? (
-              <div className="">
-                <button
-                  onClick={() => {
-                    openUser(usertoken);
-                  }}
-                  className="text-primary hover:text-primary/75"
-                >
+              <div
+                className="relative"
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+              >
+                <button className="text-primary hover:text-primary/75">
                   Profile
                 </button>
+
+                {/* Profile Modal */}
+                {profileModalVisible && (
+                  <div className="absolute top-full mt-0 right-0 w-48 bg-dark text-white rounded-md shadow-lg p-4">
+                    <div className="flex flex-col items-start gap-4">
+                      <button
+                        className="hover:text-primary"
+                        onClick={() => {
+                          openUser(usertoken);
+                        }}
+                      >
+                        My Profile
+                      </button>
+                      <button
+                        className="hover:text-primary"
+                        onClick={handleLogout}
+                      >
+                        Logout
+                      </button>
+                    </div>
+                  </div>
+                )}
               </div>
             ) : (
               <PaystackButton
@@ -501,24 +536,47 @@ const Navbar = () => {
             <div className="">
               {usertoken ? (
                 status === 1 ? (
-                  <div className="">
-                    <button
-                      onClick={() => {
-                        openUser(usertoken);
-                      }}
-                      className="text-primary hover:text-primary/75 mt-6"
-                    >
+                  <div
+                    className="relative mt-6"
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
+                  >
+                    <button className="text-primary hover:text-primary/75">
                       Profile
                     </button>
+
+                    {/* Profile Modal */}
+                    {profileModalVisible && (
+                      <div className="absolute top-full mt-0 left-0 w-48 bg-dark text-white rounded-md shadow-lg p-4">
+                        <div className="flex flex-col items-start gap-4">
+                          <button
+                            className="hover:text-primary"
+                            onClick={() => {
+                              openUser(usertoken);
+                            }}
+                          >
+                            My Profile
+                          </button>
+                          <button
+                            className="hover:text-primary"
+                            onClick={handleLogout}
+                          >
+                            Logout
+                          </button>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 ) : (
-                  <PaystackButton
-                    {...config}
-                    text="Subscribe"
-                    onSuccess={handleSuccess}
-                    onClose={handleClose}
-                    className="paystack-button text-white"
-                  />
+                  <div className="mt-6">
+                    <PaystackButton
+                      {...config}
+                      text="Subscribe"
+                      onSuccess={handleSuccess}
+                      onClose={handleClose}
+                      className="paystack-button text-white"
+                    />
+                  </div>
                 )
               ) : (
                 <div className="mt-6">

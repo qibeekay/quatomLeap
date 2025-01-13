@@ -131,9 +131,9 @@ const RegisterPage = () => {
         </div>
 
         {/* form */}
-        <div className=" flex items-center justify-center w-full md:block h-full min-h-screen px-20 md:px-0">
+        <div className=" flex items-center justify-center w-full md:block h-full min-h-screen px-4 sm:px-10 md:px-0">
           <div className="w-full h-full min-h-screen flex items-center justify-center">
-            <div className="px-[6rem] w-full max-w-[800px]">
+            <div className="md:px-[6rem] w-full max-w-[800px]">
               {/* logo */}
               <div className="w-[7rem] aspect-square">
                 <img className="w-full h-full" src={Logo} alt="Logo" />
@@ -158,7 +158,7 @@ const RegisterPage = () => {
                 >
                   <form
                     action=""
-                    className="flex flex-col mt-14 gap-4"
+                    className="flex flex-col mt-14 gap-4 "
                     onSubmit={handleSubmit}
                   >
                     {/* name */}
@@ -269,7 +269,7 @@ const RegisterPage = () => {
                       </button>
                     </div>
 
-                    <button className="bg-primary rounded-lg py-[14px] w-[188px]">
+                    <button className="bg-primary rounded-lg py-[14px] max-w-[188px]">
                       {isLoading ? "Loading..." : "Sign Up"}
                     </button>
                     <div className="w-full flex items-center justify-end">
@@ -312,7 +312,7 @@ const RegisterPage = () => {
                     </div>
 
                     <button
-                      className="bg-primary rounded-lg py-[14px] w-[188px]"
+                      className="bg-primary rounded-lg py-[14px] max-w-[188px]"
                       onClick={handleVerify}
                     >
                       {isLoading1 ? "Loading..." : "Verify"}

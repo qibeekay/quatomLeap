@@ -70,7 +70,7 @@ const LoginPage = () => {
         </div>
 
         {/* form */}
-        <div className=" flex items-center justify-center w-full md:block h-full min-h-screen px-20 md:px-0">
+        <div className=" flex items-center justify-center w-full md:block h-full min-h-screen px-4 sm:px-10 md:px-0">
           <div className="w-full h-full min-h-screen flex items-center justify-center">
             <div className="md:px-[6rem] w-full max-w-[800px]">
               {/* logo */}
@@ -137,7 +137,7 @@ const LoginPage = () => {
                     </button>
                   </div>
 
-                  <button className="bg-primary rounded-lg py-[14px] w-[188px]">
+                  <button className="bg-primary rounded-lg py-[14px] max-w-[188px]">
                     {isLoading ? "Loading..." : "Login"}
                   </button>
                   <div className="w-full flex items-center justify-end">

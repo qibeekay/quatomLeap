@@ -82,10 +82,11 @@ export const UploadProfile = async (userdata: FormDataType) => {
     console.log(response.data.status);
     if (response.data.status === false) {
       const errorMessage =
-        Array.isArray(response.data.errors) && response.data.errors[0]
-          ? response.data.errors[0]
+        Array.isArray(response.data.message) && response.data.message[0]
+          ? response.data.message[0]
           : response.data.message || "Unknown error occurred";
       toast.error(errorMessage);
+      console.log(errorMessage);
       return false;
     } else {
       console.log(response.data.message);

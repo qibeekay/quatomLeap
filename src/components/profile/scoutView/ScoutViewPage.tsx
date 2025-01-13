@@ -3,6 +3,7 @@ import {
   AcadInfo,
   AthleteBasicInfo,
   Footer,
+  Navbar,
   ProfileHeader,
   SkillsInfo,
   YoutubeLink,
@@ -40,6 +41,8 @@ const ScoutViewPage = () => {
       getProfile();
     }
   }, [usertoken]);
+
+  console.log("profile", profile);
 
   const downloadPDF = () => {
     if (!profile) {
@@ -212,7 +215,18 @@ const ScoutViewPage = () => {
   return (
     <div>
       {isLoading ? (
-        <Loader />
+        <div className="w-full min-h-screen flex items-center justify-center">
+          <Loader />
+        </div>
+      ) : !profile ? (
+        <div className="relative">
+          <Navbar />
+          <div className="w-full min-h-screen flex items-center justify-center">
+            <p className="font-bold text-lg">
+              Profile does not exist, become a prospect!!!
+            </p>
+          </div>
+        </div>
       ) : (
         <>
           <ProfileHeader name={profile?.full_name} image={profile?.image} />

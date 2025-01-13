@@ -2,7 +2,7 @@ import coo from "../../assets/coo.jpg";
 import okoli from "../../assets/okoli.jpg";
 import brit from "../../assets/brit.jpg";
 import chi from "../../assets/chi.jpg";
-import paige from "../../assets/liason.jpg";
+import paige from "../../assets/dane.jpg";
 import divine from "../../assets/divine.jpg";
 import coach from "../../assets/coach.jpg";
 import yusuf from "../../assets/yusuf.jpg";
@@ -12,7 +12,7 @@ import { FaFacebook, FaLinkedin } from "react-icons/fa";
 const Team = () => {
   const teams = [
     {
-      name: "Vivian etuka",
+      name: "Vivian Etuka",
       role: "COO/Manager",
       email: "vivian@qlsportsonline.com",
       img: coo,
@@ -69,7 +69,7 @@ const Team = () => {
           </div>
 
           <div>
-            <div className="grid items-center justify-center md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-14 sm:gap-y-8">
+            <div className="grid items-center justify-center md:grid-cols-2 llg:grid-cols-3 gap-x-8 gap-y-14 sm:gap-y-8">
               {teams.map((team, index) => (
                 <div
                   key={index}

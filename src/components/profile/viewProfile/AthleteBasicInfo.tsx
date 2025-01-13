@@ -72,7 +72,7 @@ const AthleteBasicInfo = ({ profile }: Props) => {
 
           {/* speed */}
           <div className="shadow-md h-[92px] md:w-[283px] flex items-center flex-col bg-white rounded-md justify-center">
-            <p className="text-[25px] font-semibold text-dark">Contact</p>
+            <p className="text-[25px] font-semibold text-dark">Speed</p>
             <p className="text-dark font-medium capitalize">
               {profile?.speed} mph
             </p>
