@@ -15,7 +15,7 @@ const AthleteBasicInfo = ({ profile }: Props) => {
       <div className="max-w-[1440px] px-4 mx-auto py-[80px]">
         <div className="grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 gap-y-16 md:gap-y-[6rem] w-fit mx-auto">
           {/* position */}
-          <div className="shadow-md h-[92px] xs:w-[280px] md:w-[283px] flex items-center flex-col bg-white rounded-md justify-center">
+          <div className="shadow-md min-h-[92px] xs:w-[280px] md:w-[283px] flex items-center flex-col bg-white rounded-md justify-center">
             <p className="text-[25px] font-semibold text-dark">Position</p>
             <p className="text-dark font-medium capitalize">
               {profile?.position}
@@ -23,7 +23,7 @@ const AthleteBasicInfo = ({ profile }: Props) => {
           </div>
 
           {/* class */}
-          <div className="shadow-md h-[92px] md:w-[283px] flex items-center flex-col bg-white rounded-md justify-center">
+          <div className="shadow-md min-h-[92px] md:w-[283px] flex items-center flex-col bg-white rounded-md justify-center">
             <p className="text-[25px] font-semibold text-dark">
               School / Class
             </p>
@@ -33,13 +33,13 @@ const AthleteBasicInfo = ({ profile }: Props) => {
           </div>
 
           {/* dob */}
-          <div className="shadow-md h-[92px] md:w-[283px] flex items-center flex-col bg-white rounded-md justify-center">
+          <div className="shadow-md min-h-[92px] md:w-[283px] flex items-center flex-col bg-white rounded-md justify-center">
             <p className="text-[25px] font-semibold text-dark">Date Of Birth</p>
             <p className="text-dark font-medium capitalize">{profile?.dob}</p>
           </div>
 
           {/* contact */}
-          <div className="shadow-md h-[92px] md:w-[283px] flex items-center flex-col bg-white rounded-md justify-center">
+          <div className="shadow-md min-h-[92px] md:w-[283px] flex items-center flex-col bg-white rounded-md justify-center">
             <p className="text-[25px] font-semibold text-dark">Contact</p>
             <p className="text-dark font-medium capitalize">
               {profile?.contact_info}
@@ -47,7 +47,7 @@ const AthleteBasicInfo = ({ profile }: Props) => {
           </div>
 
           {/* height */}
-          <div className="shadow-md h-[92px] md:w-[283px] flex items-center flex-col bg-white rounded-md justify-center">
+          <div className="shadow-md min-h-[92px] md:w-[283px] flex items-center flex-col bg-white rounded-md justify-center">
             <p className="text-[25px] font-semibold text-dark">Height</p>
             <p className="text-dark font-medium capitalize">
               {removeTrailingZeroes(profile?.height || 0)}
@@ -55,7 +55,7 @@ const AthleteBasicInfo = ({ profile }: Props) => {
           </div>
 
           {/* weight */}
-          <div className="shadow-md h-[92px] md:w-[283px] flex items-center flex-col bg-white rounded-md justify-center">
+          <div className="shadow-md min-h-[92px] md:w-[283px] flex items-center flex-col bg-white rounded-md justify-center">
             <p className="text-[25px] font-semibold text-dark">Weight</p>
             <p className="text-dark font-medium capitalize">
               {profile?.weight}lbs
@@ -63,7 +63,7 @@ const AthleteBasicInfo = ({ profile }: Props) => {
           </div>
 
           {/* body type */}
-          <div className="shadow-md h-[92px] md:w-[283px] flex items-center flex-col bg-white rounded-md justify-center">
+          <div className="shadow-md min-h-[92px] md:w-[283px] flex items-center flex-col bg-white rounded-md justify-center">
             <p className="text-[25px] font-semibold text-dark">Body Type</p>
             <p className="text-dark font-medium capitalize">
               {profile?.body_type}
@@ -71,7 +71,7 @@ const AthleteBasicInfo = ({ profile }: Props) => {
           </div>
 
           {/* speed */}
-          <div className="shadow-md h-[92px] md:w-[283px] flex items-center flex-col bg-white rounded-md justify-center">
+          <div className="shadow-md min-h-[92px] md:w-[283px] flex items-center flex-col bg-white rounded-md justify-center">
             <p className="text-[25px] font-semibold text-dark">Speed</p>
             <p className="text-dark font-medium capitalize">
               {profile?.speed} mph
@@ -79,7 +79,7 @@ const AthleteBasicInfo = ({ profile }: Props) => {
           </div>
 
           {/* agility */}
-          <div className="shadow-md h-[92px] md:w-[283px] flex items-center flex-col bg-white rounded-md justify-center">
+          <div className="shadow-md min-h-[92px] md:w-[283px] flex items-center flex-col bg-white rounded-md justify-center">
             <p className="text-[25px] font-semibold text-dark">Agility</p>
             <p className="text-dark font-medium capitalize">
               {profile?.agility}/10
@@ -87,7 +87,7 @@ const AthleteBasicInfo = ({ profile }: Props) => {
           </div>
 
           {/* strength */}
-          <div className="shadow-md h-[92px] md:w-[283px] flex items-center flex-col bg-white rounded-md justify-center">
+          <div className="shadow-md min-h-[92px] md:w-[283px] flex items-center flex-col bg-white rounded-md justify-center">
             <p className="text-[25px] font-semibold text-dark">Coordination</p>
             <p className="text-dark font-medium capitalize">
               {profile?.coordination}/10
@@ -95,7 +95,7 @@ const AthleteBasicInfo = ({ profile }: Props) => {
           </div>
 
           {/* coordination */}
-          <div className="shadow-md h-[92px] md:w-[283px] flex items-center flex-col bg-white rounded-md justify-center">
+          <div className="shadow-md min-h-[92px] md:w-[283px] flex items-center flex-col bg-white rounded-md justify-center">
             <p className="text-[25px] font-semibold text-dark">Strength</p>
             <p className="text-dark font-medium capitalize">
               {profile?.strength}/10
@@ -103,7 +103,7 @@ const AthleteBasicInfo = ({ profile }: Props) => {
           </div>
 
           {/* stamina */}
-          <div className="shadow-md h-[92px] md:w-[283px] flex items-center flex-col bg-white rounded-md justify-center">
+          <div className="shadow-md min-h-[92px] md:w-[283px] flex items-center flex-col bg-white rounded-md justify-center">
             <p className="text-[25px] font-semibold text-dark">Stamina</p>
             <p className="text-dark font-medium capitalize">
               {profile?.stamina}/10

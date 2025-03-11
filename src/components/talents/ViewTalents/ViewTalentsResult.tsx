@@ -192,7 +192,7 @@ const ViewTalentsResult = ({ gender, level, category }: Props) => {
                   ) : (
                     <PaystackButton
                       {...config}
-                      text="Unlock For N150,000"
+                      text="Unlock For $200"
                       onSuccess={handleSuccess}
                       onClose={handleClose}
                       className="paystack-button bg-primary rounded-lg py-[14px] w-[188px]"

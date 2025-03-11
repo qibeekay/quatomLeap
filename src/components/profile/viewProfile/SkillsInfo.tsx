@@ -40,7 +40,7 @@ const SkillsInfo = ({ profile }: Props) => {
   return (
     <div className="w-full relative bg-[#2B445DE5] text-white">
       <div className="max-w-[1440px] px-4 mx-auto py-[80px]">
-        <div className="grid grid-cols-2 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
           {/* character and personality */}
           <div>
             <p className="text-left header-2 text-white">

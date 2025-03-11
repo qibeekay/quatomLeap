@@ -57,7 +57,7 @@ const AcadInfo = ({ profile }: Props) => {
   return (
     <div className="w-full">
       <div className="max-w-[1440px] px-4 mx-auto py-[80px]">
-        <div className="flex gap-[10rem]">
+        <div className="flex flex-col sm:flex-row gap-y-[2rem] gap-x-[10rem]">
           <div className="w-full flex flex-col gap-[2rem]">
             {/* GPA */}
             <div className="w-full">

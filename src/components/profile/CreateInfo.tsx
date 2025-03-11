@@ -1,7 +1,7 @@
 const CreateInfo = () => {
   return (
     <div className="bg-white">
-      <div className="max-w-[1440px] px-4 mx-auto py-[80px]">
+      <div className="max-w-[1440px] px-4 mx-auto py-[160px]">
         <div className="flex flex-col gap-[60px]">
           <div>
             <p className="header-2">

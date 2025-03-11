@@ -139,6 +139,7 @@ const OtherSkills: React.FC<OtherSkillsProps> = ({
         {/* youtube video links */}
         <div>
           <p className="text-left header-2">YouTube Video Links</p>
+          <p>Youtube shorts are not allowed *</p>
           {formdata.video.map((link, index) => (
             <div key={index} className="flex items-center mt-2">
               <input

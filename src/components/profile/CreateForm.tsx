@@ -229,7 +229,7 @@ const CreateForm = () => {
   }, [message]);
 
   return (
-    <div className="bg-white">
+    <div className="bg-white max-w-6xl">
       <form action="" className="overflow-hidden relative">
         <div className="flex flex-col relative">
           {/* form 1 */}
@@ -367,6 +367,16 @@ const CreateForm = () => {
           </div>
         )}
       </div>
+      {step < 4 ? (
+        <p></p>
+      ) : (
+        <p className="px-4 pb-4 font-bold text-red-600">
+          Note:{" "}
+          <span className=" font-semibold">
+            After payment is made, come back to this page to upload your profile
+          </span>
+        </p>
+      )}
 
       <LoginModal isVisible={isModalVisible} onClose={handleCloseModal} />
     </div>

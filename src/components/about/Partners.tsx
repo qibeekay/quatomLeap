@@ -1,5 +1,5 @@
 import React from "react";
-import img1 from "../../assets/img/arwt.jpg";
+// import img1 from "../../assets/img/arwt.jpg";
 import img2 from "../../assets/img/beavers.jpg";
 import img3 from "../../assets/img/bocs.jpg";
 import img4 from "../../assets/img/guard.jpg";
@@ -8,7 +8,7 @@ import img6 from "../../assets/sponsor1.png";
 import img7 from "../../assets/sponsor3.png";
 import img8 from "../../assets/sponsor4.png";
 
-const images = [img1, img2, img3, img4, img5, img6, img7, img8];
+const images = [img2, img3, img4, img5, img6, img7, img8];
 
 const Partners = () => {
   return (

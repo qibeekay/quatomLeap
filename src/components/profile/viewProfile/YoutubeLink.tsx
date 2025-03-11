@@ -30,8 +30,8 @@ const YoutubeLink = ({ profile }: Props) => {
           {profile?.video?.map((link, index) => (
             <div key={index}>
               <iframe
-                width="384"
-                height="220"
+                // width="384"
+                // height="220"
                 className="rounded-lg"
                 src={convertToEmbedUrl(link)}
                 title="YouTube video player"

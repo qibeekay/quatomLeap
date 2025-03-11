@@ -1,5 +1,11 @@
 import React from "react";
-import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
+import {
+  FaFacebook,
+  FaInstagram,
+  FaLinkedin,
+  FaTiktok,
+  FaTwitter,
+} from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const ContactUsDetails = () => {
@@ -35,28 +41,31 @@ const ContactUsDetails = () => {
           </p>
           <div className="mt-7 mb-14 flex items-center justify-center gap-4">
             <Link
-              to={""}
-              className="hover:text-primary text-white ease-in-out duration-300 text-2xl lg:text-[2.5rem]"
-            >
-              <FaFacebook />
-            </Link>
-            <Link
-              to={""}
+              to={
+                "https://www.instagram.com/ql_sportsonline?igsh=YmlrdHEybDIzNWk4&utm_source=qr"
+              }
               className="hover:text-primary text-white ease-in-out duration-300 text-2xl lg:text-[2.5rem]"
             >
               <FaInstagram />
             </Link>
             <Link
-              to={""}
+              to={"http://www.tiktok.com/@quantumleapsports"}
               className="hover:text-primary text-white ease-in-out duration-300 text-2xl lg:text-[2.5rem]"
             >
-              <FaLinkedin />
+              <FaTiktok />
             </Link>
             <Link
               to={""}
               className="hover:text-primary text-white ease-in-out duration-300 text-2xl lg:text-[2.5rem]"
             >
-              <FaTwitter />
+              <FaFacebook />
+            </Link>
+
+            <Link
+              to={""}
+              className="hover:text-primary text-white ease-in-out duration-300 text-2xl lg:text-[2.5rem]"
+            >
+              <FaLinkedin />
             </Link>
           </div>
         </div>

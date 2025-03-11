@@ -68,7 +68,7 @@ const AthleteInfo: React.FC<Props> = ({ formdata, handleChange }) => {
                     value="pro"
                     className="peer hidden"
                     onChange={handleChange}
-                    // checked={formdata.gender.includes("male")}
+                    checked={formdata.level.includes("pro")}
                   />
                   <label
                     htmlFor="pro"
@@ -85,7 +85,7 @@ const AthleteInfo: React.FC<Props> = ({ formdata, handleChange }) => {
                     id="college"
                     value="college"
                     onChange={handleChange}
-                    // checked={formdata.gender.includes("female")}
+                    checked={formdata.level.includes("college")}
                     className="peer hidden"
                   />
                   <label
@@ -103,7 +103,7 @@ const AthleteInfo: React.FC<Props> = ({ formdata, handleChange }) => {
                     id="highschool"
                     value="highschool"
                     onChange={handleChange}
-                    // checked={formdata.gender.includes("female")}
+                    checked={formdata.level.includes("highschool")}
                     className="peer hidden"
                   />
                   <label
@@ -158,7 +158,7 @@ const AthleteInfo: React.FC<Props> = ({ formdata, handleChange }) => {
                     value="male"
                     className="peer hidden"
                     onChange={handleChange}
-                    // checked={formdata.gender.includes("male")}
+                    checked={formdata.gender.includes("male")}
                   />
                   <label
                     htmlFor="male"
@@ -175,7 +175,7 @@ const AthleteInfo: React.FC<Props> = ({ formdata, handleChange }) => {
                     id="female"
                     value="female"
                     onChange={handleChange}
-                    // checked={formdata.gender.includes("female")}
+                    checked={formdata.gender.includes("female")}
                     className="peer hidden"
                   />
                   <label
