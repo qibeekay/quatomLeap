@@ -14,6 +14,7 @@ const CreateProfile = lazy(() => import("./pages/create-profile"));
 const ScoutView = lazy(() => import("./pages/scout-view"));
 const Login = lazy(() => import("./pages/auth/login"));
 const Register = lazy(() => import("./pages/auth/register"));
+const Reset = lazy(() => import("./pages/auth/reset-password"));
 const Profile = lazy(() => import("./pages/profile"));
 const CreateBlogs = lazy(() => import("./pages/admin/create-blog"));
 const Dashboard = lazy(() => import("./pages/admin/dashboard"));
@@ -54,6 +55,7 @@ function App() {
           {/* Auth pages */}
           <Route path="/auth/login" element={<Login />} />
           <Route path="/auth/register" element={<Register />} />
+          <Route path="/auth/forgot-password" element={<Reset />} />
           <Route path="/profile" element={<Profile />} />
 
           {/* Admin pages */}

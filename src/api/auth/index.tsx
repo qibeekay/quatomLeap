@@ -126,3 +126,100 @@ export const GetUserdata = async (usertoken: string) => {
     throw new Error(error.response?.data?.message || "Failed to fetch");
   }
 };
+
+// reset password
+export const ForgotPassword = async (userdata: { email: string }) => {
+  try {
+    const response = await axios.post(
+      `${URL}/auths/forgot-password.php`,
+      userdata,
+      {
+        headers: {
+          Authorization: `Bearer ${bearer}`,
+        },
+      }
+    );
+
+    console.log(response.data.status);
+    if (response.data.status === false) {
+      console.log("error");
+      toast.error(response.data.message);
+      return false;
+    } else {
+      console.log(response.data.message);
+      toast.success(response.data.message);
+      localStorage.setItem("hopemail", userdata.email);
+      return true;
+    }
+  } catch (error: any) {
+    console.error("Reset Error", error);
+    throw new Error(error.response?.data?.message || "Failed to register");
+  }
+};
+
+// verify code
+export const VerifyResetCode = async (userdata: {
+  email: string;
+  code: string;
+}) => {
+  try {
+    const response = await axios.post(
+      `${URL}/auths/verify-reset-code.php`,
+      userdata,
+      {
+        headers: {
+          Authorization: `Bearer ${bearer}`,
+        },
+      }
+    );
+
+    console.log(response.data.status);
+    if (response.data.status === false) {
+      console.log("error");
+      toast.error(response.data.message);
+      return false;
+    } else {
+      console.log(response.data.message);
+      toast.success(response.data.message);
+      return true;
+    }
+  } catch (error: any) {
+    console.error("Reset Code Error", error);
+    throw new Error(error.response?.data?.message || "Failed to register");
+  }
+};
+
+// reset password
+export const ResetPassword = async (userdata: {
+  email: string;
+  code: string;
+  password: string;
+  cpassword: string;
+}) => {
+  try {
+    const response = await axios.post(
+      `${URL}/auths/reset-password.php`,
+      userdata,
+      {
+        headers: {
+          Authorization: `Bearer ${bearer}`,
+        },
+      }
+    );
+
+    console.log(response.data.status);
+    if (response.data.status === false) {
+      console.log("error");
+      toast.error(response.data.message);
+      return false;
+    } else {
+      console.log(response.data.message);
+      toast.success(response.data.message);
+      localStorage.setItem("hopemail", userdata.email);
+      return true;
+    }
+  } catch (error: any) {
+    console.error("Reset Error", error);
+    throw new Error(error.response?.data?.message || "Failed to register");
+  }
+};

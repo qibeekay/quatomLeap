@@ -127,7 +127,7 @@ const LoginPage = () => {
                     <button
                       type="button"
                       onClick={togglePasswordVisibility}
-                      className="absolute top-[50%] right-2  text-black/60"
+                      className="absolute top-[50%] -translate-y-1/2 right-2  text-black/60"
                     >
                       {showPassword ? (
                         <IoEyeOffSharp size={25} />
@@ -135,6 +135,14 @@ const LoginPage = () => {
                         <IoEyeSharp size={25} />
                       )}
                     </button>
+                    <div className="w-full mt-1">
+                      <Link
+                        to={"/auth/forgot-password"}
+                        className="flex text-sm text-primary items-center gap-4"
+                      >
+                        Forgot password?
+                      </Link>
+                    </div>
                   </div>
 
                   <button className="bg-primary rounded-lg py-[14px] max-w-[188px]">
