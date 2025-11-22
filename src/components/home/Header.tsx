@@ -11,6 +11,13 @@ import img8 from "../../assets/imgs2.jpg";
 import img9 from "../../assets/imgs3.jpg";
 import img10 from "../../assets/imgs4.jpg";
 import img11 from "../../assets/imgs5.jpg";
+import club from "../../assets/img/club.jpg";
+import club1 from "../../assets/img/club2.jpg";
+import club2 from "../../assets/img/club3.jpg";
+import club3 from "../../assets/img/club4.jpg";
+import club4 from "../../assets/img/club5.jpg";
+import club5 from "../../assets/img/club6.jpg";
+import club6 from "../../assets/img/club7.jpg";
 
 // Array of background images
 const images = [
@@ -25,6 +32,13 @@ const images = [
   img9,
   img10,
   img11,
+  club,
+  club1,
+  club2,
+  club3,
+  club4,
+  club5,
+  club6,
 ];
 
 interface props {
@@ -35,6 +49,7 @@ interface props {
   smsize?: string;
   ath?: string;
 }
+
 const Header = ({ h1, p, btext, size, ath, smsize }: props) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -47,6 +62,11 @@ const Header = ({ h1, p, btext, size, ath, smsize }: props) => {
     // Cleanup interval on component unmount
     return () => clearInterval(interval);
   }, []);
+
+  // Optional: Add click handler for manual navigation
+  const handleIndicatorClick = (index: number) => {
+    setCurrentImageIndex(index);
+  };
 
   return (
     <header className="mt-10 md:mt-0">
@@ -71,81 +91,27 @@ const Header = ({ h1, p, btext, size, ath, smsize }: props) => {
           </div>
         </div>
 
-        {/* indicator */}
+        {/* Dynamic indicator */}
         <div className="absolute bottom-20 left-[50%] -translate-x-[50%]">
-          <div className="flex items-center  justify-center w-full relative gap-4">
-            {/* indicator 1 */}
-            <div
-              className={`w-[22px] aspect-square rounded-full border-2  grid items-center justify-center ${
-                currentImageIndex === 0 ? "border-primary" : "border-[#E6E1E5]"
-              }`}
-            >
-              <div
-                className={`w-[12px] aspect-square rounded-full ${
-                  currentImageIndex === 0 ? "bg-primary" : "bg-[#E6E1E5]"
+          <div className="flex items-center justify-center gap-4">
+            {images.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => handleIndicatorClick(index)}
+                className={`w-[22px] aspect-square rounded-full border-2 grid items-center justify-center cursor-pointer transition-all duration-300 ${
+                  currentImageIndex === index
+                    ? "border-primary scale-110"
+                    : "border-[#E6E1E5] hover:border-primary/50"
                 }`}
-              ></div>
-            </div>
-            {/* indicator 1 */}
-            <div
-              className={`w-[22px] aspect-square rounded-full border-2  grid items-center justify-center ${
-                currentImageIndex === 1 ? "border-primary" : "border-[#E6E1E5]"
-              }`}
-            >
-              <div
-                className={`w-[12px] aspect-square rounded-full ${
-                  currentImageIndex === 1 ? "bg-primary" : "bg-[#E6E1E5]"
-                }`}
-              ></div>
-            </div>
-            {/* indicator 2 */}
-            <div
-              className={`w-[22px] aspect-square rounded-full border-2  grid items-center justify-center ${
-                currentImageIndex === 2 ? "border-primary" : "border-[#E6E1E5]"
-              }`}
-            >
-              <div
-                className={`w-[12px] aspect-square rounded-full ${
-                  currentImageIndex === 2 ? "bg-primary" : "bg-[#E6E1E5]"
-                }`}
-              ></div>
-            </div>
-            {/* indicator 3 */}
-            <div
-              className={`w-[22px] aspect-square rounded-full border-2  grid items-center justify-center ${
-                currentImageIndex === 3 ? "border-primary" : "border-[#E6E1E5]"
-              }`}
-            >
-              <div
-                className={`w-[12px] aspect-square rounded-full ${
-                  currentImageIndex === 3 ? "bg-primary" : "bg-[#E6E1E5]"
-                }`}
-              ></div>
-            </div>
-            {/* indicator 4 */}
-            <div
-              className={`w-[22px] aspect-square rounded-full border-2  grid items-center justify-center ${
-                currentImageIndex === 4 ? "border-primary" : "border-[#E6E1E5]"
-              }`}
-            >
-              <div
-                className={`w-[12px] aspect-square rounded-full ${
-                  currentImageIndex === 4 ? "bg-primary" : "bg-[#E6E1E5]"
-                }`}
-              ></div>
-            </div>
-            {/* indicator 3 */}
-            <div
-              className={`w-[22px] aspect-square rounded-full border-2  grid items-center justify-center ${
-                currentImageIndex === 5 ? "border-primary" : "border-[#E6E1E5]"
-              }`}
-            >
-              <div
-                className={`w-[12px] aspect-square rounded-full ${
-                  currentImageIndex === 5 ? "bg-primary" : "bg-[#E6E1E5]"
-                }`}
-              ></div>
-            </div>
+                aria-label={`Go to slide ${index + 1}`}
+              >
+                <div
+                  className={`w-[12px] aspect-square rounded-full transition-all duration-300 ${
+                    currentImageIndex === index ? "bg-primary" : "bg-[#E6E1E5]"
+                  }`}
+                ></div>
+              </button>
+            ))}
           </div>
         </div>
       </div>
