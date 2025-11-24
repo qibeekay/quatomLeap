@@ -93,7 +93,7 @@ const Header = ({ h1, p, btext, size, ath, smsize }: props) => {
 
         {/* Dynamic indicator */}
         <div className="absolute bottom-20 left-[50%] -translate-x-[50%]">
-          <div className="flex items-center justify-center gap-4">
+          <div className="hidden md:flex items-center justify-center gap-4">
             {images.map((_, index) => (
               <button
                 key={index}
