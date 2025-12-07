@@ -6,8 +6,8 @@ import paige from "../../assets/dane.jpg";
 import divine from "../../assets/divine.jpg";
 import coach from "../../assets/coach.jpg";
 import yusuf from "../../assets/yusuf.jpg";
+import okiki from "../../assets/okiki.jpg";
 import { Link } from "react-router-dom";
-import { FaFacebook, FaLinkedin } from "react-icons/fa";
 
 const Team = () => {
   const teams = [
@@ -58,6 +58,12 @@ const Team = () => {
       role: "IT Specialist",
       email: "chibuike@qlsportsonline.com",
       img: chi,
+    },
+    {
+      name: "Michael Okiki Afuwape",
+      role: "Player Development Coach/ Scout",
+      email: "michael@qlsportsonline.com",
+      img: okiki,
     },
   ];
   return (
